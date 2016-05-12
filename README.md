@@ -1,39 +1,63 @@
 # PDO_CRUD
  Database Wrapper Library to decrease development time 
- 
+
+```
+$pdoObj = new PdoCrud();
+``` 
  
 ## Create a Database Connection ##
 
 ```
 $dbCred = array( __
-            'dbName' => "Main_DataBase",
+            'dbName' => "Main_DataBase",//database name
             'username' => 'root',
             'password' => ''
             );
 ```
 
- Create a object with result type of PDO::FETCH_OBJ
+ By default the fetch result type is set to PDO::FETCH_OBJ
  to change the result type change $this->resultType Property of the PDO Class
 ```
-$pdoObj = new PdoCrud();
+$dbCred->resultType = /PDO::FETCH_ASSOC;
 ```
 ## Read (Fetch results from Database table)
 ```
 $resultData = $pdoObj->Get(array(
-                            'table' => 'products',
+                            'table' => 'products',//table name
                             'fields' => array('id', 'name'),
                             'where' => array(
                                         'id' => 20
                                         )
                             ));
 ```                            
-## Create(insert data into a table)
+## Create(insert data into a table) 
 ```
-$insertId = $pdoObj->Set(array(
+$lastInsertId = $pdoObj->Set(array(
                             'table' => 'products'
                             'data' => array(
                                       'name' => 'John',
                                       'age'=> 10
                             )
                           ));
-```    
+```  
+## Update
+```
+$rowCount = $pdoObj->Update(array(
+                            'table' => 'products',
+                            'data' => array(
+                                   'name' => 'James'
+                                   'age' => 40
+                                    ),
+                            'where' => array(
+                                  'name' => 'John',
+                                  'age' => 10
+                             ));
+```
+## Delete
+```
+$rowCount = $pdoObj->Delete(array(
+                            'table' => 'products',
+                            'where' => array(
+                                  'id' => 12
+                                 ) 
+                            ));
