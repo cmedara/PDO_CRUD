@@ -30,7 +30,7 @@ $resultData = $pdoObj->Get(array(
                                         )
                             ));
 ```                            
-## Create(insert data into a table) 
+## Create(Insert data into a table) 
 ```
 $lastInsertId = $pdoObj->Set(array(
                             'table' => 'products'
@@ -40,7 +40,7 @@ $lastInsertId = $pdoObj->Set(array(
                             )
                           ));
 ```  
-## Update
+## Update(Update a Value in DB)
 ```
 $rowCount = $pdoObj->Update(array(
                             'table' => 'products',
@@ -53,7 +53,7 @@ $rowCount = $pdoObj->Update(array(
                                   'age' => 10
                              ));
 ```
-## Delete
+## Delete(Delete a row in DB)
 ```
 $rowCount = $pdoObj->Delete(array(
                             'table' => 'products',
